@@ -8,7 +8,7 @@ export default function SignIn() {
     <>
         <Navbar/>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className='border shadow-md sm:mx-auto sm:w-full sm:max-w-sm px-3 my-3 rounded-md'>  
+        <div className=' bg-slate-50 border shadow-md sm:mx-auto sm:w-full sm:max-w-sm px-3 my-3 rounded-md'>  
         <div className="sm:mx-auto sm:w-full sm:max-w-sm py-3 ">
           {/* <img
             className="mx-auto h-10 w-auto m-2 "
@@ -65,7 +65,7 @@ export default function SignIn() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className=" uppercase flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign in
               </button>
