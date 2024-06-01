@@ -47,7 +47,6 @@ export default function Signup() {
 
   return (
     <>
-      <Navbar />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className='bg-slate-50 border shadow-md sm:mx-auto sm:w-full sm:max-w-sm px-3 my-3 rounded-md'>
           <div className="sm:mx-auto sm:w-full sm:max-w-sm py-3">

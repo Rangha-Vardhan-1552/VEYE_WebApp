@@ -6,9 +6,11 @@ import Home from "./components/Home"
 import Projects from "./components/Projects"
 import Services from "./components/Services"
 import Dashboard from "./components/Dashboard"
+import Navbar from "./components/navbar"
 function App() {
   return (
     <>
+    <Navbar/>
      <Routes>
      <Route path="/" element={<Home/>}/>
       <Route path="/signup" element={<Signup/>}/>
