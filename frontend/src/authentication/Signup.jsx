@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/navbar';
 import { IoPersonCircle } from "react-icons/io5";
-
+import {useNavigate} from 'react-router-dom'
 export default function Signup() {
   const [formData, setFormData] = useState({
     username: '',
@@ -10,6 +10,7 @@ export default function Signup() {
   });
 
   const [message, setMessage] = useState(null);
+  const navigate= useNavigate()
 
   const inputHandler = (e) => {
     setFormData({
@@ -30,9 +31,10 @@ export default function Signup() {
       });
       const data = await response.json();
       if (response.ok) {
-        setMessage({ type: 'success', text: 'Signup successful!' });
+        setMessage({ type: 'success', text:data.message });
         console.log(data.message);
         // Redirect or handle successful signup
+        navigate('/signin')
       } else {
         setMessage({ type: 'error', text: data.message });
         console.error('Signup failed:', data.message);

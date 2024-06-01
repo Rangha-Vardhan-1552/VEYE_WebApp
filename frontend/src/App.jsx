@@ -5,6 +5,7 @@ import SignIn from "./authentication/SignIn"
 import Home from "./components/Home"
 import Projects from "./components/Projects"
 import Services from "./components/Services"
+import Dashboard from "./components/Dashboard"
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
       <Route path="/signin" element={<SignIn/>}/>
       <Route path="/projects" element={<Projects/>}/>
       <Route path="/services" element={<Services/>}/>
+      <Route path="/dashboard" element={<Dashboard/>}/>
      </Routes>
     </>
   )
