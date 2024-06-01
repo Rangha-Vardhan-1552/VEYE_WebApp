@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Disclosure,
   DisclosureButton,
@@ -18,7 +18,8 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const { user } = useAuth();
+  const { user,logout } = useAuth();
+  const navigate = useNavigate()
   const navigation = user
     ? [
         { name: 'Dashboard', href: '/dashboard', current: true },
@@ -29,6 +30,25 @@ export default function Navbar() {
         { name: 'Register', href: '/signup', current: true },
         { name: 'Login', href: '/signin', current: false },
       ];
+
+    const handleSignOut = async()=>{
+      try {
+        const response = await fetch('http://localhost:4000/api/auth/signout',{
+          method:'GET',
+          headers:{
+            'Content-Type':'application/json'
+          }
+        })
+        const data= await response.json()
+        if(response.ok){
+          // alert(data.message)
+          logout()
+          navigate('/signup')
+        }
+      } catch (error) {
+        console.error("Signout failed",error)
+      }
+    }
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -107,8 +127,8 @@ export default function Navbar() {
                         <MenuItem>
                           {({ active }) => (
                             <a
-                              href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            
+                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer')}
                             >
                               Your Profile
                             </a>
@@ -117,8 +137,7 @@ export default function Navbar() {
                         <MenuItem>
                           {({ active }) => (
                             <a
-                              href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer')}
                             >
                               Settings
                             </a>
@@ -127,8 +146,8 @@ export default function Navbar() {
                         <MenuItem>
                           {({ active }) => (
                             <a
-                              href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                              onClick={handleSignOut}
+                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer')}
                             >
                               Sign out
                             </a>
