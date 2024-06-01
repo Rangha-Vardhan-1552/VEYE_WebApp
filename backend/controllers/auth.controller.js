@@ -40,3 +40,12 @@ export const sigin= async(req,res)=>{
     }
 
 }
+
+export const signout=async(req,res)=>{
+    try {
+      await res.clearCookie('access_token')
+      res.status(200).json({message:"user has been logged out...!"})  
+    } catch (error) {
+        res.status(500).json({message:'internal server error'})
+    }
+}

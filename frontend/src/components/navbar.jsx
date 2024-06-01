@@ -12,12 +12,6 @@ import {
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../context/userContext';
 
-const navigation = [
-  { name: 'Register', href: '/signup', current: true },
-  { name: 'Login', href: '/signin', current: false },
-  { name: 'Projects', href: '/projects', current: false },
-  { name: 'Services', href: '/services', current: false },
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -25,6 +19,16 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const { user } = useAuth();
+  const navigation = user
+    ? [
+        { name: 'Dashboard', href: '/dashboard', current: true },
+        { name: 'Projects', href: '/projects', current: false },
+        { name: 'Services', href: '/services', current: false },
+      ]
+    : [
+        { name: 'Register', href: '/signup', current: true },
+        { name: 'Login', href: '/signin', current: false },
+      ];
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
