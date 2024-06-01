@@ -12,22 +12,23 @@ const app = express();
 app.use(express.json());
 
 // CORS configuration
-app.use(cors({
-  origin: 'http://localhost:5173',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
+// app.use(cors({
+//   // origin: 'http://localhost:5173',
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true
+// }));
 
-// Preflight request handling
-app.options('*', cors());
+// // Preflight request handling
+// app.options('*', cors());
 
 // Routes
-app.use('/api/user', AuthRouter);
+app.use('/api/auth', AuthRouter);
 
-const port = 4000;
+
 
 // Root route for testing
+const port = 4000;
 app.get('/', (req, res) => {
   res.send("Express is working...!");
 });
