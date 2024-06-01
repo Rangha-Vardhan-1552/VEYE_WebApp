@@ -33,7 +33,7 @@ export const sigin= async(req,res)=>{
     const createToken= jwt.sign({id:validUser._id},process.env.JWT_TOKEN)
     res.cookie('access_token',createToken,{httpOnly:true})
         .status(200)
-        .json({message:'user login successfully..!'})
+        .json({message:resUserInfo})
     } catch (error) {
         return res.status(500).json({message:'internal server error...!'})
 

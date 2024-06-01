@@ -3,6 +3,7 @@ import Navbar from '../components/navbar'
 import { IoPersonCircle } from "react-icons/io5";
 import { FaUserLock } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/userContext';
 
 export default function SignIn() {
   const [error,setError] =useState(false)
@@ -12,7 +13,7 @@ export default function SignIn() {
     password:""
   })
 const navigate = useNavigate()
-
+const {login} =useAuth()
   const inputchangeHandler =(e)=>{
     setFormData({
       ...formData,
@@ -33,7 +34,8 @@ const navigate = useNavigate()
       const data= await response.json()
       if (response.ok){
         console.log(data.message)
-        setMessage({ type: 'success', text: data.message });
+        setMessage({ type: 'success', text: 'user login Successfully' });
+        login(data.message)
         navigate('/dashboard')
       }else{
         setMessage({ type: 'error', text: data.message });
