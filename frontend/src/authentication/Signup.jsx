@@ -44,11 +44,16 @@ export default function Signup() {
       console.error('Error:', error);
     }
   };
-
+  const backgroundImage='https://images.pexels.com/photos/3183176/pexels-photo-3183176.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className='bg-slate-50 border shadow-md sm:mx-auto sm:w-full sm:max-w-sm px-3 my-3 rounded-md'>
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8" 
+      style={{backgroundImage:`url(${backgroundImage})`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center'
+      }}>
+        <div className='bg-slate-50 border shadow-md sm:mx-auto sm:w-full sm:max-w-sm px-3 my-3 rounded-md bg-opacity-35'>
           <div className="sm:mx-auto sm:w-full sm:max-w-sm py-3">
             <IoPersonCircle className="mx-auto h-14 w-14 text-blue-700" />
             <h2 className="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -126,7 +131,7 @@ export default function Signup() {
               </div>
             )}
 
-            <p className="mt-10 text-center text-sm text-gray-500 mb-3">
+            <p className="mt-10 text-center text-sm  mb-3">
               Already a member?{' '}
               <a href="/signin" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                 Sign in

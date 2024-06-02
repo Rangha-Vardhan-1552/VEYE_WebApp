@@ -47,10 +47,16 @@ const {login} =useAuth()
       console.error('Error:', error);
     }
   }
+  const backgroundImage='  https://images.pexels.com/photos/8728562/pexels-photo-8728562.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   return (
     <>
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className=' bg-slate-50 border shadow-md sm:mx-auto sm:w-full sm:max-w-sm px-3 my-3 rounded-md'>  
+        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8" style={{backgroundImage:`url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center'
+        }}>
+        <div className=' bg-slate-50 border shadow-md sm:mx-auto sm:w-full sm:max-w-sm px-3 my-3 rounded-md bg-opacity-35'
+        > 
         <div className="sm:mx-auto sm:w-full sm:max-w-sm py-3 ">
           {/* <img
             className="mx-auto h-10 w-auto m-2 "
@@ -122,7 +128,7 @@ const {login} =useAuth()
               </div>
             )}
 
-          <p className="mt-10 text-center text-sm text-gray-500 mb-3">
+          <p className="mt-10 text-center text-sm text-white mb-3">
             Not a member?{' '}
             <a href="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
               Register

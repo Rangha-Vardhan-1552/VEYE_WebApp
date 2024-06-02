@@ -7,6 +7,7 @@ import Projects from "./components/Projects"
 import Services from "./components/Services"
 import Dashboard from "./components/Dashboard"
 import Navbar from "./components/navbar"
+import Aboutus from "./components/Aboutus"
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
       <Route path="/projects" element={<Projects/>}/>
       <Route path="/services" element={<Services/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
+      <Route path="/aboutus" element={<Aboutus/>}/>
      </Routes>
     </>
   )

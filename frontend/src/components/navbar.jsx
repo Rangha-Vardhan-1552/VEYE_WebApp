@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Disclosure,
@@ -11,15 +12,17 @@ import {
 } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../context/userContext';
-
+import Popup from './Popup';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 export default function Navbar() {
-  const { user,logout } = useAuth();
-  const navigate = useNavigate()
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const [isPopupVisible, setPopupVisible] = useState(false);
+
   const navigation = user
     ? [
         { name: 'Dashboard', href: '/dashboard', current: true },
@@ -29,26 +32,13 @@ export default function Navbar() {
     : [
         { name: 'Register', href: '/signup', current: true },
         { name: 'Login', href: '/signin', current: false },
+        { name: 'About Us', href: '/aboutus', current: false },
       ];
 
-    const handleSignOut = async()=>{
-      try {
-        const response = await fetch('http://localhost:4000/api/auth/signout',{
-          method:'GET',
-          headers:{
-            'Content-Type':'application/json'
-          }
-        })
-        const data= await response.json()
-        if(response.ok){
-          // alert(data.message)
-          logout()
-          navigate('/signup')
-        }
-      } catch (error) {
-        console.error("Signout failed",error)
-      }
-    }
+
+
+  const showPopup = () => setPopupVisible(true);
+  const hidePopup = () => setPopupVisible(false);
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -127,7 +117,6 @@ export default function Navbar() {
                         <MenuItem>
                           {({ active }) => (
                             <a
-                            
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer')}
                             >
                               Your Profile
@@ -146,7 +135,7 @@ export default function Navbar() {
                         <MenuItem>
                           {({ active }) => (
                             <a
-                              onClick={handleSignOut}
+                              onClick={showPopup}
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer')}
                             >
                               Sign out
@@ -179,6 +168,7 @@ export default function Navbar() {
               ))}
             </div>
           </DisclosurePanel>
+          {isPopupVisible && <Popup onClose={hidePopup} />}
         </>
       )}
     </Disclosure>
