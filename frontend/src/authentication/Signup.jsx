@@ -53,7 +53,7 @@ export default function Signup() {
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center'
       }}>
-        <div className='bg-slate-50 border shadow-md sm:mx-auto sm:w-full sm:max-w-sm px-3 my-3 rounded-md bg-opacity-35'>
+        <div className='bg-slate-50 border shadow-md sm:mx-auto sm:w-full sm:max-w-md px-3 my-3 rounded-md bg-opacity-35'>
           <div className="sm:mx-auto sm:w-full sm:max-w-sm py-3">
             <IoPersonCircle className="mx-auto h-14 w-14 text-blue-700" />
             <h2 className="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

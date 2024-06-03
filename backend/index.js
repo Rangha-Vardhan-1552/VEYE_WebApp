@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import AuthRouter from "./routes/auth.route.js";
 import cors from "cors";
+import paymentRouter from "./routes/payment.route.js";
 
 dotenv.config();
 
@@ -13,7 +14,7 @@ app.use(express.json());
 
 // CORS configuration
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
@@ -24,6 +25,7 @@ app.options('*', cors());
 
 // Routes
 app.use('/api/auth', AuthRouter);
+app.use('/payment/orders',paymentRouter)
 
 
 
