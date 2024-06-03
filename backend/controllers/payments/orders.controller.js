@@ -12,7 +12,7 @@ export const order= async(req,res)=>{
         if(!order){
             return res.status(500).json({message:'Error in creating order'})
         }
-        res.status(201).json({message:order})
+        res.status(201).json(order)
     } catch (error) {
         return res.status(500).json("internal server error")
     }
@@ -28,8 +28,15 @@ export const verifyOrder= async(req, res) => {
                                     .digest('hex');
   
     if (expectedSignature === razorpay_signature) {
-      res.json({ verified: true });
+      res.status(200).json({ verified: true ,
+        message:"Payment Successfully",
+        orderId:razorpay_order_id,
+        paymentId:razorpay_payment_id
+      });
     } else {
-      res.json({ verified: false });
+      res.status(400).json({
+         verified: false,
+         message:"transcation failed...! Please try again.",
+        });
     }
 };
