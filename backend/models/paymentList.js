@@ -13,12 +13,10 @@ const paymentListSchema= new mongoose.Schema(
     },
     amount:{
         type:String,
-        unique:true,
         required:true
     },
     status:{
         type:String,
-        unique:true,
         required:true
     }
     },{timestamps:true}

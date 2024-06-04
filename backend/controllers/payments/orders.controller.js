@@ -56,3 +56,18 @@ export const verifyOrder = async (req, res) => {
   
 };
 
+export const fetchPayments=async (req,res)=>{
+  try {
+    const fetchDetails= await paymentList.find()
+    if(fetchDetails){
+      res.status(200).json(fetchDetails)
+    }else{
+      res.status(401).json("error in fetching in details...!")
+    }
+
+  } catch (error) {
+    res.status(500).json('internal server error')
+  }
+  
+}
+
