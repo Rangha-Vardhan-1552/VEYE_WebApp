@@ -14,13 +14,11 @@ export default function SuccessPopup({ onSuccessClose }) {
            </div>
            <div className='flex justify-center'>
                 <span className='text-lg font-semibold font-sans text-center'>🎉Payment Successful...✨</span>
-           </div>
-           
-          
+           </div>  
         
-        <div className="flex justify-end gap-4 mt-8 text-sm">
-          <button className="px-2 py-2 bg-gray-300 rounded" onClick={onSuccessClose}>Cancel</button>
-          <button className="px-2 py-2 bg-blue-400 text-white rounded font-semibold" onClick={()=>navigate('/dashboard')}>dashboard</button>
+        <div className="flex justify-center gap-4 mt-8 text-sm">
+          <button className="px-4 py-2 bg-gray-300 rounded uppercase font-semibold" onClick={onSuccessClose} >Ok</button>
+          {/* <button className="px-2 py-2 bg-blue-400 text-white rounded font-semibold" onClick={()=>navigate('/dashboard')}>dashboard</button> */}
         </div>
       </div>
     </div>
