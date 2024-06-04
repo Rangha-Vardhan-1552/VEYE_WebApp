@@ -1,6 +1,14 @@
 import mongoose from "mongoose";
 const paymentListSchema= new mongoose.Schema(
     {
+    signature:{
+        type:String,
+        required:true
+    },
+    username:{
+        type:String,
+        required:true
+   },
     paymentID:{
         type:String,
         unique:true,

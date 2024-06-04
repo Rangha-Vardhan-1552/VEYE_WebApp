@@ -4,5 +4,5 @@ import { fetchPayments, order, verifyOrder } from "../controllers/payments/order
 const paymentRouter=Router()
 paymentRouter.post('/createorder',order)
 paymentRouter.post('/verifyorder',verifyOrder)
-paymentRouter.get('/fetchPayments',fetchPayments)
+paymentRouter.post('/fetchPayments',fetchPayments)
 export default paymentRouter;

@@ -20,7 +20,7 @@ export const order = async (req, res) => {
     if (!order) {
       return res.status(500).json({ message: 'Error in creating order' });
     }
-    paymentData = { ...paymentData, orderID: order.id, amount: order.amount };
+    paymentData = { ...paymentData, orderID: order.id, amount: order.amount ,username:options.receipt};
     res.status(201).json(order);
   } catch (error) {
     return res.status(500).json("internal server error");
@@ -36,7 +36,7 @@ export const verifyOrder = async (req, res) => {
     .digest('hex');
 
   if (expectedSignature === razorpay_signature) {
-    paymentData = { ...paymentData, paymentID: razorpay_payment_id, status: 'success' };
+    paymentData = { ...paymentData, paymentID: razorpay_payment_id, status: 'success',signature:razorpay_signature ,createdSignature:expectedSignature};
     const createPaymentDetails= new paymentList(paymentData)
     await createPaymentDetails.save()
     res.status(200).json({
@@ -57,10 +57,17 @@ export const verifyOrder = async (req, res) => {
 };
 
 export const fetchPayments=async (req,res)=>{
+  const {username} =req.body
   try {
+    let userDetails=[]
     const fetchDetails= await paymentList.find()
     if(fetchDetails){
-      res.status(200).json(fetchDetails)
+      fetchDetails.map((items)=>{
+        if (items.username===username){
+          userDetails.push(items)
+        }
+      })
+      res.status(200).json(userDetails)
     }else{
       res.status(401).json("error in fetching in details...!")
     }

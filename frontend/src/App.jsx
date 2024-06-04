@@ -8,6 +8,7 @@ import Services from "./components/Services"
 import Dashboard from "./components/Dashboard"
 import Navbar from "./components/navbar"
 import Aboutus from "./components/Aboutus"
+import Payments from "./components/Payments"
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
       <Route path="/services" element={<Services/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
       <Route path="/aboutus" element={<Aboutus/>}/>
+      <Route path="/payments" element={<Payments/>}/>
      </Routes>
     </>
   )
